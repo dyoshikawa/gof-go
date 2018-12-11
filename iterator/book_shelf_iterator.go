@@ -2,12 +2,12 @@ package main
 
 type BookShelfIterator struct {
 	BookShelf BookShelf
-	index int
+	index     int
 }
 
-func NewBookShelfIterator(bs BookShelf) *BookShelfIterator {
+func NewBookShelfIterator(bs *BookShelf) *BookShelfIterator {
 	bsi := new(BookShelfIterator)
-	bsi.BookShelf = bs
+	bsi.BookShelf = *bs
 	bsi.index = 0
 	return bsi
 }
@@ -20,7 +20,7 @@ func (bsi *BookShelfIterator) HasNext() bool {
 	}
 }
 
-func (bsi *BookShelfIterator) Next() Book {
+func (bsi *BookShelfIterator) Next() interface{} {
 	book := bsi.BookShelf.GetBookAt(bsi.index)
 	bsi.index++
 	return book

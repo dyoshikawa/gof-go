@@ -1,6 +1,6 @@
 package main
 
 type Iterator interface {
-	HasNext()
-	Next()
+	HasNext() bool
+	Next() interface{}
 }
